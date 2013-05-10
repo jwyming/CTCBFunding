@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="sysParamForm"
+			type="com.eds.ctcb.form.system.SysParamForm">
+		</form-bean>
+		<form-bean name="invAmountForm"
+			type="com.eds.ctcb.form.system.InvAmountForm">
+		</form-bean>
+		<form-bean name="handleTariffForm"
+			type="com.eds.ctcb.form.system.HandleTariffForm">
+		</form-bean>
+		<form-bean name="transferTariffForm"
+			type="com.eds.ctcb.form.system.TransferTariffForm">
+		</form-bean>
+		<form-bean name="topicForm"
+			type="com.eds.ctcb.form.system.TopicForm">
+		</form-bean>
+		<form-bean name="miscSettingForm"
+			type="com.eds.ctcb.form.system.MiscSettingForm">
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action path="/preSetInitPwd"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="preSetInitPwd">
+			<forward name="success" path="initialpwdsetting"></forward>
+		</action>
+		<action path="/setInitialPwd" name="sysParamForm"
+			validate="true" input="initialpwdsetting"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="setInitialPwd">
+			<forward name="success" path="/initPwdSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/initPwdFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		<action path="/initPwdSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/initPwdFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="initialpwdsetting">
+		</action>
+		
+		<action path="/preSetInitInvAmount"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="preSetInitInvAmount">
+			<forward name="success" path="initInvAmount"></forward>
+		</action>
+		
+		<action path="/setInitInvAmount" name="invAmountForm"
+			validate="true" input="initInvAmount"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="setInitInvAmount">
+			<forward name="success" path="/initInvAmountSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/initInvAmountFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		<action path="/initInvAmountSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/initInvAmountFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="initInvAmount">
+		</action>
+		
+		
+		<action path="/preSetHandleTariff"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="preSetHandleTariff">
+			<forward name="success" path="handleTariffSetting"></forward>
+		</action>
+		<action path="/setHandleTariff" name="handleTariffForm"
+			validate="true" input="handleTariffSetting"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="setHandleTariff">
+			<forward name="success" path="/setHandleTariffSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/setHandleTariffFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		<action path="/setHandleTariffSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/setHandleTariffFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="handleTariffSetting">
+		</action>
+		<action path="/preSetTransferTariff"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="preSetTransferTariff">
+			<forward name="success" path="transferTariffSetting"></forward>
+		</action>
+		<action path="/setTransferTariff" name="transferTariffForm"
+			validate="true" input="transferTariffSetting"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="setTransferTariff">
+			<forward name="success" path="/setTransferTariffSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/setTransferTariffFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		<action path="/setTransferTariffSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/setTransferTariffFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="transferTariffSetting">
+		</action>
+		
+		<action path="/preSetCompetitionTopic"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="preSetCompetitionTopic">
+			<forward name="success" path="competitionTopicSetting"></forward>
+		</action>
+		<action path="/setCompetitionTopic" name="topicForm"
+			validate="false" input="competitionTopicSetting"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="setCompetitionTopic">
+			<forward name="success" path="/setCompetitionTopicSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/setCompetitionTopicFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		<action path="/setCompetitionTopicSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/setCompetitionTopicFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="competitionTopicSetting">
+		</action>
+		
+		<action path="/preSetMisc"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="preSetMisc">
+			<forward name="success" path="otherSetting"></forward>
+		</action>
+		<action path="/setMisc" name="miscSettingForm"
+			validate="false" input="otherSetting"
+			type="com.eds.ctcb.action.SysParamAction"
+			parameter="setMisc">
+			<forward name="success" path="/setMiscSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/setMiscFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		<action path="/setMiscSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/setMiscFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="otherSetting">
+		</action>
+		
+		
+		<!--Ajax selection of Topic setting -->
+		<action path="/getTopicQuarter"
+                type="com.eds.ctcb.action.SysParamAction"
+                parameter="getTopicQuarter">
+            <forward name="success" path="/jsp/system/quarterSelection.jsp"/>
+             <forward name="blank" path="/jsp/user/blank.jsp"/>
+        </action>
+        
+        <action path="/getTopic"
+                type="com.eds.ctcb.action.SysParamAction"
+                parameter="getTopic">
+            <forward name="success" path="/jsp/system/topicSelection.jsp"/>
+             <forward name="blank" path="/jsp/user/blank.jsp"/>
+        </action>
+		
+	</action-mappings>
+
+</struts-config>
+

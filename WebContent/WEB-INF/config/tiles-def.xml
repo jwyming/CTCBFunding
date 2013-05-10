@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC 
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="layout" path="/jsp/layout/layout.jsp">
+		<put name="header" value="/jsp/layout/header.jsp" />
+		<put name="menu" value="/jsp/layout/menu.jsp" />
+		<put name="message" value="/jsp/layout/message.jsp" />
+		<put name="content" value="" />
+		<put name="footer" value="/jsp/layout/footer.jsp" />
+	</definition>
+	<definition name="login" extends="layout">
+		<put name="menu" value="/jsp/layout/blank.jsp" />
+		<put name="content" value="/jsp/login.jsp" />
+	</definition>
+    <definition name="index" extends="layout">
+		<put name="content" value="/index.jsp" />
+	</definition>
+    <definition name="showMessage" extends="layout">
+		<put name="message" value="/jsp/layout/blank.jsp" />
+		<put name="content" value="/jsp/message.jsp" />
+	</definition>
+</tiles-definitions>

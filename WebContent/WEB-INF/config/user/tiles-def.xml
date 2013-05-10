@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+
+ <!DOCTYPE tiles-definitions PUBLIC 
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd"> 
+
+<tiles-definitions>
+	<definition name="addUser" extends="layout">
+		<put name="content" value="/jsp/user/addUser.jsp" />
+	</definition>
+	<definition name="modifyUserInfo" extends="layout">
+		<put name="content" value="/jsp/user/modifyUserInfo.jsp" />
+	</definition>
+	<definition name="admModifyUserInfo" extends="layout">
+		<put name="content" value="/jsp/user/admModifyUserInfo.jsp" />
+	</definition>
+	<definition name="modifyUserPwd" extends="layout">
+		<put name="content" value="/jsp/user/modifyUserPwd.jsp" />
+	</definition>
+	<definition name="userList" extends="layout">
+		<put name="content" value="/jsp/user/userList.jsp" />
+	</definition>
+</tiles-definitions>
+

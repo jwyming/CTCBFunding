@@ -1,0 +1,86 @@
+
+.header{ background-color:#00655B }
+
+.isRequired{
+	color: red ;
+	font-family:"宋体";
+	font-size:12px;
+}
+body {
+	margin: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;	
+	color: #333333;
+	line-height:20px;
+	text-decoration:none;
+	background-color:#ffffff;
+}
+
+.menu {
+	position:absolute;
+	top:48px;
+	left:-1px;
+	width:1235px;
+	z-index:10;
+}
+
+
+
+body a {font-size:12px;color:#006600;}
+
+body a:hover{font-size:12px;color: #FF0000;text-decoration:none;}
+
+table {font-size:12px;	color: #00655b;line-height:20px;}
+.txt_01{font-size:12px;	color: #333333;line-height:20px;}
+.txt_02{font-size:12px;color:#006600;line-height:20px;text-decoration:underline;}
+table tr td select {font-size:12px;	color: #333333;line-height:20px;}
+table tr td select option {font-size:12px;	color:  #333333;line-height:20px;}
+table tr td lable input {font-size:12px;color: #333333;line-height:20px;}
+table tr td  input {font-size:12px;color: #333333;line-height:20px;}
+
+.tableBorder{
+	width: 90%;
+	display: block;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-bottom-width: 1px;
+	
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #9ECDF6;
+	border-right-color: #9ECDF6;
+	border-left-color: #9ECDF6;
+	border-bottom-color: #9ECDF6;
+	font-family: Verdana, Arial, Helvetica, sans-serif, "����";
+	font-size: 12px;
+	line-height: 22px;
+	color: #2E65A9;
+	text-decoration: none;
+	padding-top: 0px;
+	padding-bottom: 2px;
+	text-align: right;
+	}
+	.th {
+	font-family: Verdana, Arial, Helvetica, sans-serif, "����";
+	font-size: 12px;
+	line-height: 22px;
+	color: #000000;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-top-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+	background-color:#7ABDAC;
+}
+   .tabletr{
+    background-color: #CFE4F6;
+	font-family: Verdana, Arial, Helvetica, sans-serif, "����";
+	font-size: 12px;
+	line-height: 22px;
+	color:   #000000;
+	text-decoration: none;
+	}

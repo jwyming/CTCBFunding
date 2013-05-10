@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+
+ <!DOCTYPE tiles-definitions PUBLIC 
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd"> 
+
+<tiles-definitions>
+ <definition name="custOverView" extends="layout"> 
+    <put name="content" value="/jsp/report/custOverView.jsp"/> 
+ </definition> 
+ <definition name="fundPerformance" extends="layout"> 
+    <put name="content" value="/jsp/report/fundPerformance.jsp"/> 
+ </definition> 
+ <definition name="custInvestment" extends="layout"> 
+    <put name="content" value="/jsp/report/custInvestment.jsp"/> 
+ </definition> 
+ <definition name="adminIndex" extends="layout">
+ <put name="content" value="/jsp/report/adminIndex.jsp"></put>
+ </definition>
+
+ 
+</tiles-definitions> 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!-- ====================== Log AOP ====================== -->
+	<bean id="logInterceptor"
+		class="com.eds.ctcb.common.LogInterceptor" />
+	<bean id="logAutoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<value>*Dao,*Biz</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<idref bean="logInterceptor" />
+			</list>
+		</property>
+	</bean>
+
+    <!-- ====================== Transaction AOP ====================== -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="transactionAttribute"
+		class="org.springframework.transaction.interceptor.DefaultTransactionAttribute">
+		<property name="propagationBehaviorName"
+			value="PROPAGATION_REQUIRED" />
+	</bean>
+
+	<bean id="matchAlwaysTransactionAttributeSource"
+		class="org.springframework.transaction.interceptor.MatchAlwaysTransactionAttributeSource">
+		<property name="transactionAttribute">
+			<ref bean="transactionAttribute"/>
+		</property>
+	</bean>
+
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource">
+			<ref bean="matchAlwaysTransactionAttributeSource" />
+		</property>
+	</bean>
+	<bean id="transactAutoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<value>*Biz</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<idref bean="transactionInterceptor" />
+			</list>
+		</property>
+	</bean>
+</beans>

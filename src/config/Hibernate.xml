@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- ====================== dataSource ====================== -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@W2mzq50b02:1522:poms</value>
+		</property>
+		<property name="username">
+			<value>CTCB</value>
+		</property>
+		<property name="password">
+			<value>CTCB</value>
+		</property>
+	</bean>
+	<!--  Please don't delete this!!!!!!!!!!!!!!!!!!!!!!!!!-->
+	<!--
+		<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="CtcbDataSource"/>
+		</bean>
+	-->
+	<!-- ====================== sessionFactory ====================== -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle9Dialect
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>/com/eds/ctcb/db/Role.hbm.xml</value>
+				<value>/com/eds/ctcb/db/UserRole.hbm.xml</value>
+				<value>/com/eds/ctcb/db/Resource.hbm.xml</value>
+				<value>/com/eds/ctcb/db/RoleResource.hbm.xml</value>
+				<value>/com/eds/ctcb/db/Location.hbm.xml</value>
+				<value>/com/eds/ctcb/db/ResourceLocation.hbm.xml</value>
+				<value>/com/eds/ctcb/db/User.hbm.xml</value>
+				<value>/com/eds/ctcb/db/FundEquity.hbm.xml</value>
+				<value>/com/eds/ctcb/db/ExchangeRate.hbm.xml</value>
+				<value>/com/eds/ctcb/db/CashAccount.hbm.xml</value>
+				<value>/com/eds/ctcb/db/Fund.hbm.xml</value>
+				<value>/com/eds/ctcb/db/FundAccount.hbm.xml</value>
+				<value>/com/eds/ctcb/db/Account.hbm.xml</value>
+				<value>/com/eds/ctcb/db/SavingPlan.hbm.xml</value>
+				<value>/com/eds/ctcb/db/Trade.hbm.xml</value>
+				<value>/com/eds/ctcb/db/TradeTask.hbm.xml</value>
+				<value>/com/eds/ctcb/db/ReportData.hbm.xml</value>
+				<value>/com/eds/ctcb/db/ReportInfo.hbm.xml</value>
+				<value>/com/eds/ctcb/db/Holiday.hbm.xml</value>
+				<value>/com/eds/ctcb/db/Log.hbm.xml</value>
+				<value>/com/eds/ctcb/db/TradeTime.hbm.xml</value>
+				<value>/com/eds/ctcb/db/SysParam.hbm.xml</value>
+				<value>/com/eds/ctcb/db/RankSet.hbm.xml</value>
+				<value>/com/eds/ctcb/db/TimerTask.hbm.xml</value>
+				<value>/com/eds/ctcb/db/FundType.hbm.xml</value>
+				<value>/com/eds/ctcb/db/FundArea.hbm.xml</value>
+				<value>/com/eds/ctcb/db/FundIndustry.hbm.xml</value>
+				<value>/com/eds/ctcb/db/FundCompany.hbm.xml</value>
+				<value>/com/eds/ctcb/db/Currency.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+</beans>

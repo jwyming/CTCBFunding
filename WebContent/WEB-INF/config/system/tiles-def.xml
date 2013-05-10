@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+
+ <!DOCTYPE tiles-definitions PUBLIC 
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd"> 
+
+<tiles-definitions>
+	<definition name="initialpwdsetting" extends="layout">
+		<put name="content" value="/jsp/system/initialpwdsetting.jsp" />
+	</definition>
+	<definition name="initInvAmount" extends="layout">
+		<put name="content" value="/jsp/system/initInvAmt.jsp" />
+	</definition>
+	<definition name="transferTariffSetting" extends="layout">
+		<put name="content" value="/jsp/system/transferTariffSetting.jsp" />
+	</definition>
+	<definition name="handleTariffSetting" extends="layout">
+		<put name="content" value="/jsp/system/handleTariffSetting.jsp"/>
+	</definition>
+	<definition name="competitionTopicSetting" extends="layout">
+		<put name="content" value="/jsp/system/competitionTopicSetting.jsp" />
+	</definition>
+	<definition name="otherSetting" extends="layout">
+		<put name="content" value="/jsp/system/otherSetting.jsp" />
+	</definition>
+</tiles-definitions>
+

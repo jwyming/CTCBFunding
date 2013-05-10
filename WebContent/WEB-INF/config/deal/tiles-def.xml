@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+
+ <!DOCTYPE tiles-definitions PUBLIC 
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd"> 
+
+<tiles-definitions>
+ <definition name="singleInvestment" extends="layout"> 
+    <put name="content" value="/jsp/deal/singleInvestment.jsp"/> 
+ </definition>
+ 
+ <definition name="regularInvestment" extends="layout"> 
+    <put name="content" value="/jsp/deal/regularInvestment.jsp"/> 
+ </definition>
+ 
+ <definition name="irregularInvestment" extends="layout"> 
+    <put name="content" value="/jsp/deal/irregularInvestment.jsp"/> 
+ </definition>
+ 
+<definition name="selling" extends="layout"> 
+    <put name="content" value="/jsp/deal/selling.jsp"/> 
+ </definition>
+ 
+ <definition name="changeFund" extends="layout"> 
+    <put name="content" value="/jsp/deal/changeFund.jsp"/> 
+ </definition>
+ 
+  <definition name="switchInvestment" extends="layout"> 
+    <put name="content" value="/jsp/deal/switchInvestment.jsp"/> 
+ </definition>
+ 
+ <definition name="regularInvestmentList" extends="layout">
+    <put name="content" value="/jsp/deal/regularInvestmentList.jsp"/> 
+ </definition>
+ 
+ <definition name="regularInvestmentChange" extends="layout">
+    <put name="content" value="/jsp/deal/regularInvestmentChange.jsp"/> 
+ </definition>
+ 
+<definition name="irregularInvestmentList" extends="layout">
+    <put name="content" value="/jsp/deal/irregularInvestmentList.jsp"/> 
+ </definition>
+ 
+ <definition name="irregularInvestmentChange" extends="layout">
+    <put name="content" value="/jsp/deal/irregularInvestmentChange.jsp"/> 
+ </definition>
+ 
+</tiles-definitions>

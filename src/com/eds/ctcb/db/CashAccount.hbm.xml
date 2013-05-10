@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.eds.ctcb.db">
+    <class name="CashAccount" table="T_CASHACCOUNT" schema="CTCB">
+        <id name="accountId" type="java.lang.Long">
+            <column name="ACCOUNTID" precision="22" scale="0" />
+            <generator class="foreign">
+            <param name="property">account</param>
+            </generator>
+        </id>
+       
+      <one-to-one name="account" class="Account" constrained="true"></one-to-one>
+        <many-to-one name="currency" class="Currency" fetch="select" lazy="false">
+            <column name="CURRENCY" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="count" type="java.math.BigDecimal">
+            <column name="COUNT" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

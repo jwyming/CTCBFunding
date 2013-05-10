@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+<formset>
+        <form name="investmentOrderForm">
+            <field property="userNickName"  >
+                <arg0 key="investmentOrder.userNickName"/>
+            </field>
+
+            <field property="beginOrder"   depends="mask">
+                <arg0 key="investmentOrder.beginOrder"/>
+                <var> 
+                  <var-name>mask</var-name> 
+                  <var-value>^[\d]{1,6}$</var-value> 
+                </var>  
+                
+            </field>
+            
+            <field property="endOrder" depends="mask">
+                <arg0 key="investmentOrder.endOrder" />
+                          
+                <var> 
+                  <var-name>mask</var-name> 
+                  <var-value>^[\d]{1,6}$</var-value> 
+                </var>  
+            </field>
+            </form>
+      </formset>
+
+</form-validation>

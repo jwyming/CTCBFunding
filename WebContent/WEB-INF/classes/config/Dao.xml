@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<!-- ====================== Base Dao ====================== -->
+	<bean id="baseDao" class="com.eds.ctcb.dao.BaseDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+<!-- ====================== Dao ====================== -->
+	<bean id="userDao" class="com.eds.ctcb.dao.account.UserDaoImpl" parent="baseDao"/>
+	<bean id="userRoleDao" class="com.eds.ctcb.dao.priv.UserRoleDaoImpl" parent="baseDao"/>
+	<bean id="resourceDao" class="com.eds.ctcb.dao.priv.ResourceDaoImpl" parent="baseDao"/>
+	<bean id="roleResourceDao" class="com.eds.ctcb.dao.priv.RoleResourceDaoImpl" parent="baseDao"/>
+	<bean id="resourceLocationDao" class="com.eds.ctcb.dao.priv.ResourceLocationDaoImpl" parent="baseDao"/>
+	<bean id="tradeDao" class="com.eds.ctcb.dao.deal.TradeDaoImpl" parent="baseDao"/>
+	<bean id="tradeTaskDao" class="com.eds.ctcb.dao.deal.TradeTaskDaoImpl" parent="baseDao"/>
+	<bean id="savingPlanDao" class="com.eds.ctcb.dao.deal.SavingPlanDaoImpl" parent="baseDao"/>
+	<bean id="sysParamDao" class="com.eds.ctcb.dao.system.SysParamDaoImpl" parent="baseDao"/>
+	<bean id="roleDao" class="com.eds.ctcb.dao.priv.RoleDaoImpl" parent="baseDao"/>
+	<bean id="cashAccountDao" class="com.eds.ctcb.dao.account.CashAccountDaoImpl" parent="baseDao"/>
+	<bean id="fundAccountDao" class="com.eds.ctcb.dao.account.FundAccountDaoImpl" parent="baseDao"/>
+    <bean id="fundTypeDao" class="com.eds.ctcb.dao.account.FundTypeDaoImpl" parent="baseDao"/>
+    <bean id="fundCompanyDao" class="com.eds.ctcb.dao.account.FundCompanyDaoImpl" parent="baseDao"/>
+    <bean id="fundAreaDao" class="com.eds.ctcb.dao.account.FundAreaDaoImpl" parent="baseDao"/>
+    <bean id="fundIndustryDao" class="com.eds.ctcb.dao.account.FundIndustryDaoImpl" parent="baseDao"/>
+    <bean id="currencyDao" class="com.eds.ctcb.dao.account.CurrencyDaoImpl" parent="baseDao"/>
+    <bean id="fundEquityDao" class="com.eds.ctcb.dao.account.FundEquityDaoImpl" parent="baseDao"/>
+    <bean id="exchangeRateDao" class="com.eds.ctcb.dao.account.ExchangeRateDaoImpl" parent="baseDao"/>
+    <bean id="fundDao" class="com.eds.ctcb.dao.account.FundDaoImpl" parent="baseDao"/>
+    <bean id="logDao" class="com.eds.ctcb.dao.system.LogDaoImpl" parent="baseDao"/>
+    <bean id="tradeTimeDao" class="com.eds.ctcb.dao.system.TradeTimeDaoImpl" parent="baseDao"/>
+    <bean id="holidayDao" class="com.eds.ctcb.dao.system.HolidayDaoImpl" parent="baseDao"/>
+    <bean id="accountDao" class="com.eds.ctcb.dao.account.AccountDaoImpl" parent="baseDao"/>
+    <bean id="timerTaskDao" class="com.eds.ctcb.dao.task.TimerTaskDaoImpl" parent="baseDao"/>
+    <bean id="reportInfoDao" class="com.eds.ctcb.dao.report.ReportInfoDaoImpl" parent="baseDao"/>
+    <bean id="reportDataDao" class="com.eds.ctcb.dao.report.ReportDataDaoImpl" parent="baseDao"/>
+</beans>

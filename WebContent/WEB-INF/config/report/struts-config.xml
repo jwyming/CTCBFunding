@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+         <form-bean name="fundPerformanceForm"
+			type="com.eds.ctcb.form.report.FundPerformanceForm" >				
+		</form-bean>
+		<form-bean name="investmentOrderForm"
+		    type="com.eds.ctcb.form.report.InvestmentOrderForm">
+		</form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+		
+		
+		<action path="/preCustOverView"
+			type="com.eds.ctcb.action.ReportAction"
+			parameter="preCustOverView">
+			<forward name="success" path="custOverView"></forward>
+			<forward name="admin" path="/menu_19.do"></forward>
+			<forward name="failure" path="showMessage"></forward>
+			<forward name="return" path="/login.do"/>
+		</action>
+		<action path="/getFundPerformanceList"
+		    name="fundPerformanceForm"
+			type="com.eds.ctcb.action.ReportAction"
+			parameter="getFundPerformanceList">
+			<forward name="success" path="fundPerformance"></forward>
+			<forward name="failure" path="showMessage"></forward>
+			<forward name="return" path="/menu_1.do"/>
+		</action>
+		<action path="/pagingFundPerformanceList"
+			type="com.eds.ctcb.action.ReportAction"
+			parameter="pagingFundPerformanceList">
+			<forward name="success" path="fundPerformance"></forward>
+		</action>
+		<action input="custInvestment" path="/getCustInvestmentList"
+		    name="investmentOrderForm"
+			type="com.eds.ctcb.action.ReportAction"
+			parameter="getCustInvestmentList">
+			<forward name="success" path="custInvestment"></forward>
+			<forward name="failure" path="showMessage"></forward>
+			<forward name="return" path="/menu_1.do"/>
+		</action>
+		<action path="/pagingCustInvestmentList"
+			type="com.eds.ctcb.action.ReportAction"
+			parameter="pagingCustInvestmentList">
+			<forward name="success" path="custInvestment"></forward>
+		</action>	
+		<action path="/getReportDataList"				  
+			type="com.eds.ctcb.action.ReportAction"
+			parameter="getReportDataList">
+			<forward name="success" path="custInvestment"></forward>
+		</action>
+		<action path="/pagingReportDataList"
+			type="com.eds.ctcb.action.ReportAction"
+			parameter="pagingReportDataList">
+			<forward name="success" path="custInvestment"></forward>
+		</action>
+		<action path="/pagingPreInvestmentList"
+			type="com.eds.ctcb.action.ReportAction"
+			parameter="pagingPreInvestmentList">
+			<forward name="success" path="custOverView"></forward>
+		</action>
+		
+		
+		
+		
+		
+  </action-mappings>
+
+</struts-config>
+

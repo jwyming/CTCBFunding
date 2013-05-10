@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.eds.ctcb.db">
+    <class name="Account" table="T_ACCOUNT" schema="CTCB">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="22" scale="0" />
+            <generator class="sequence">
+            <param name="sequence">SEQ_ACCOUNT</param>
+            </generator>
+        </id>
+        
+        <many-to-one name="user" class="User" fetch="select" lazy="false">
+            <column name="USERID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        
+        <property name="type" type="java.lang.Integer">
+            <column name="TYPE" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATETIME" length="7" not-null="true" />
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="REMARK" length="256" />
+        </property>
+       
+      
+      
+        
+      <one-to-one name="cashAccount" class="CashAccount" lazy="false"/>
+     
+      <one-to-one name="fundAccount" class="FundAccount" lazy="false"/>
+       
+        <set name="savingPlans" inverse="true">
+            <key>
+                <column name="ACCOUNTID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="SavingPlan" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

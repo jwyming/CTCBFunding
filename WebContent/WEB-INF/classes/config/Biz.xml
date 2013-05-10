@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- ====================== Base Biz ====================== -->
+    <bean id="baseBiz" class="com.eds.ctcb.biz.BaseBiz">
+        <property name="userDao" ref="userDao"/>
+        <property name="userRoleDao" ref="userRoleDao"/>
+        <property name="resourceDao" ref="resourceDao"/>
+        <property name="roleResourceDao" ref="roleResourceDao"/>
+        <property name="resourceLocationDao" ref="resourceLocationDao"/>
+        <property name="tradeDao" ref="tradeDao"/>
+        <property name="tradeTaskDao" ref="tradeTaskDao"/>
+        <property name="savingPlanDao" ref="savingPlanDao"/>
+        <property name="sysParamDao" ref="sysParamDao"/>
+        <property name="roleDao" ref="roleDao"/>
+        <property name="cashAccountDao" ref="cashAccountDao"/>
+        <property name="fundAccountDao" ref="fundAccountDao"/>
+        <property name="fundTypeDao" ref="fundTypeDao"/>
+        <property name="fundCompanyDao" ref="fundCompanyDao"/>
+        <property name="fundAreaDao" ref="fundAreaDao"/>
+        <property name="fundIndustryDao" ref="fundIndustryDao"/>
+        <property name="currencyDao" ref="currencyDao"/>
+        <property name="fundDao" ref="fundDao"/>
+        <property name="accountDao" ref="accountDao"/>
+        <property name="fundEquityDao" ref="fundEquityDao"/>
+        <property name="exchangeRateDao" ref="exchangeRateDao"/>
+        <property name="logDao" ref="logDao"/>
+        <property name="holidayDao" ref="holidayDao"/>
+        <property name="tradeTimeDao" ref="tradeTimeDao"/>
+        <property name="timerTaskDao" ref="timerTaskDao"/>
+        <property name="reportInfoDao" ref="reportInfoDao"/>
+        <property name="reportDataDao" ref="reportDataDao"/>
+    </bean>
+
+    <!-- ====================== Biz ====================== -->
+    <bean id="privBiz" class="com.eds.ctcb.biz.priv.PrivBizImpl" parent="baseBiz"/>
+    <bean id="systemManagementBiz" class="com.eds.ctcb.biz.system.SystemManagementBizImpl" parent="baseBiz"/>
+    <bean id="userBiz" class="com.eds.ctcb.biz.system.UserBizImpl" parent="baseBiz"/>
+    <bean id="investmentBiz" class="com.eds.ctcb.biz.deal.InvestmentBizImpl" parent="baseBiz"/>
+    <bean id="singleInvestmentBiz" class="com.eds.ctcb.biz.deal.SingleInvestmentBizImpl" parent="baseBiz"/>
+    <bean id="regularInvestmentBiz" class="com.eds.ctcb.biz.deal.RegularInvestmentBizImpl" parent="baseBiz"/>
+    <bean id="irregularInvestmentBiz" class="com.eds.ctcb.biz.deal.IrregularInvestmentBizImpl" parent="baseBiz"/>  
+    <bean id="sellingBiz" class="com.eds.ctcb.biz.deal.SellingBizImpl" parent="baseBiz"/>
+    <bean id="changeFundBiz" class="com.eds.ctcb.biz.deal.ChangeFundBizImpl" parent="baseBiz"/>
+    <bean id="switchInvestmentBiz" class="com.eds.ctcb.biz.deal.SwitchInvestmentBizImpl" parent="baseBiz"/> 
+    <bean id="investmentChangeBiz" class="com.eds.ctcb.biz.deal.InvestmentChangeBizImpl" parent="baseBiz"/>
+    <bean id="reportBiz" class="com.eds.ctcb.biz.report.ReportBizImpl" parent="baseBiz"/>
+    <bean id="savingPlanExecBiz" class="com.eds.ctcb.biz.deal.exec.SavingPlanExecBizImpl" parent="baseBiz"/>
+    <bean id="investmentExecBiz" class="com.eds.ctcb.biz.deal.exec.InvestmentExecBizImpl" parent="baseBiz"/>
+    <bean id="timerTaskBiz" class="com.eds.ctcb.biz.task.TimerTaskBizImpl" parent="baseBiz"/>
+
+    <!-- ====================== BizFactory ====================== -->
+    <bean id="bizFactory" class="com.eds.ctcb.biz.BizFactory">
+        <property name="privBiz" ref="privBiz"/>
+        <property name="systemManagementBiz" ref="systemManagementBiz"/>
+        <property name="userBiz" ref="userBiz"/>
+        <property name="investmentBiz" ref="investmentBiz"/>
+        <property name="singleInvestmentBiz" ref="singleInvestmentBiz"/>
+        <property name="regularInvestmentBiz" ref="regularInvestmentBiz"/>
+        <property name="irregularInvestmentBiz" ref="irregularInvestmentBiz"/> 
+        <property name="sellingBiz" ref="sellingBiz"/>
+        <property name="changeFundBiz" ref="changeFundBiz"/>
+        <property name="switchInvestmentBiz" ref="switchInvestmentBiz"/> 
+        <property name="investmentChangeBiz" ref="investmentChangeBiz"/>     
+        <property name="reportBiz" ref="reportBiz"/>
+        <property name="savingPlanExecBiz" ref="savingPlanExecBiz"/>
+        <property name="investmentExecBiz" ref="investmentExecBiz"/>
+        <property name="timerTaskBiz" ref="timerTaskBiz"/>
+    </bean>
+</beans>

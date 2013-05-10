@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<project name="CTCB" default="install" basedir=".">
+	<!-- =========================== property =========================== -->
+	<property name="build.dir" value="." />
+	<property name="build.lib" value="${build.dir}/WebContent/WEB-INF/lib" />
+	<property name="build.classes" value="${build.dir}/WebContent/WEB-INF/classes" />
+	<property name="build.src.home" value="${build.dir}/src" />
+	<property name="build.debug" value="on"/>
+	<property name="build.optimize" value="on"/>
+	<property name="build.deprecation" value="on"/>
+	<!-- =========================== path =========================== -->
+	<path id="classpath">
+		<fileset dir="${build.lib}">
+			<include name="*.jar" />
+		</fileset>	
+		<fileset dir="${build.dir}/lib-ex">
+			<include name="*.jar" />
+		</fileset>		
+	</path>
+	<property name="classpath" refid="classpath" />
+	<!-- =========================== target =========================== -->
+	<target name="init">
+		<delete dir="${build.classes}"/>
+		<mkdir dir="${build.classes}" />
+		<echo message="java.home = ${java.home}" />
+		<echo message="user.home = ${user.home}" />
+		<echo message="classpath = ${classpath}" />
+	</target>
+	<target name="compile" depends="init" >
+		<javac 
+			srcdir="${build.src.home}" 
+			destdir="${build.classes}" 
+			debug="${build.debug}" 			
+			deprecation="${build.deprecation}"
+			optimize="${build.optimize}"
+			>
+			<compilerarg   value="-Xlint:unchecked"/>  
+			<classpath refid="classpath"/> 
+		</javac>
+	</target>	
+	<target name="install" depends="compile">	
+		<copy todir="${build.classes}" overwrite="yes">
+			<fileset dir="${build.src.home}">				
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>		
+		<war warfile="${build.dir}/CTCB.war"
+			 webxml="${build.dir}/WebContent/WEB-INF/web.xml" compress="true">     
+			 <fileset dir="${build.dir}/WebContent/"> 
+		      	<exclude name="**/web.xml"/>			 	
+			 </fileset>
+		</war>
+		<delete dir="${build.classes}"></delete>
+	</target>
+</project>

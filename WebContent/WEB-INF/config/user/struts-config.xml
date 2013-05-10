@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="userForm"
+			type="com.eds.ctcb.form.system.UserForm">
+		</form-bean>
+		<form-bean name="userQryForm"
+			type="com.eds.ctcb.form.system.UserQryForm">
+		</form-bean>
+		<form-bean name="simpleUserForm"
+			type="com.eds.ctcb.form.system.SimpleUserForm">
+		</form-bean>
+		<form-bean name="pwdForm"
+			type="com.eds.ctcb.form.system.PwdForm">
+		</form-bean>
+		<form-bean name="userFormEx"
+			type="com.eds.ctcb.form.system.UserFormEx">
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action path="/preAddUser"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="preAddUser">
+			<forward name="success" path="addUser"></forward>
+		</action>
+		
+		<action path="/addUser" name="userForm"
+			validate="true" input="addUser"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="addUser">
+			<forward name="success" path="/addUserSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/addUserFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		<action path="/addUserSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/addUserFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="addUser">
+		</action>
+		
+		<action path="/preManageUserInfo"
+			name="userQryForm"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="preManageUserInfo">
+			<forward name="success" path="userList"></forward>
+		</action>
+		
+		<!--action path="/qryUserInfo"
+			name="userQryForm"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="qryUserInfo">
+			<forward name="success" path="userList"></forward>
+		</action-->
+		
+		<action path="/pagingUserList"
+			name="userQryForm"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="pagingUserList">
+			<forward name="success" path="userList"></forward>
+		</action>
+		
+		<action path="/resetUserPwd"
+			name="userQryForm"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="resetUserPwd">
+			<forward name="success" path="/preManageUserInfo.do"></forward>
+		</action>
+		
+		<action path="/deleteUser"
+			name="userQryForm"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="deleteUser">
+			<forward name="success" path="/preManageUserInfo.do"></forward>
+		</action>
+		
+		<action path="/preAdmModifyUserInfo"
+			name="userFormEx"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="preAdmModifyUserInfo">
+			<forward name="success" path="admModifyUserInfo"></forward>
+		</action>
+		
+		<action path="/admModifyUserInfo" name="userFormEx"
+			validate="true" input="admModifyUserInfo"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="admModifyUserInfo">
+			<forward name="success" path="/preManageUserInfo.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/admModifyUserInfoFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		<!-- action path="/admModifyUserInfoSuccess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action-->
+		<action path="/admModifyUserInfoFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="admModifyUserInfo">
+		</action>
+		
+		
+		<action path="/preModifyUserInfo"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="preModifyUserInfo">
+			<forward name="success" path="modifyUserInfo"></forward>
+		</action>
+		
+		<action path="/modifyUserInfo"
+			name="simpleUserForm"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="modifyUserInfo">
+			<forward name="success" path="/modifyUserInfoSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/modifyUserInfoFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		
+		<action path="/modifyUserInfoSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/modifyUserInfoFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="modifyUserInfo">
+		</action>
+		
+		<action path="/preModifyUserPwd"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="preModifyUserPwd">
+			<forward name="success" path="modifyUserPwd"></forward>
+		</action>
+		
+		<action path="/modifyUserPwd"
+			name="pwdForm"
+			validate="true" input="modifyUserPwd"
+			type="com.eds.ctcb.action.UserAction"
+			parameter="modifyUserPwd">
+			<forward name="success" path="/modifyUserPwdSucess.do"
+				redirect="true">
+			</forward>
+			<forward name="failure" path="/modifyUserPwdFail.do"
+				redirect="true">
+			</forward>
+		</action>
+		
+		<action path="/modifyUserPwdSucess"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/menu_1.do">
+		</action>
+		<action path="/modifyUserPwdFail"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="modifyUserPwd">
+		</action>
+	</action-mappings>
+
+</struts-config>
+

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+    <data-sources/>
+    <form-beans>
+        <form-bean name="singleInvestmentForm"
+                   type="com.eds.ctcb.form.deal.SingleInvestmentForm">
+        </form-bean>
+        <form-bean name="regularInvestmentForm"
+                   type="com.eds.ctcb.form.deal.RegularInvestmentForm">
+        </form-bean>
+        <form-bean name="irregularInvestmentForm"
+                   type="com.eds.ctcb.form.deal.IrregularInvestmentForm">
+        </form-bean>
+        <form-bean name="sellingForm"
+                   type="com.eds.ctcb.form.deal.SellingForm">
+        </form-bean>
+        <form-bean name="changeFundForm"
+                   type="com.eds.ctcb.form.deal.ChangeFundForm">
+        </form-bean>
+        <form-bean name="switchInvestmentForm"
+                   type="com.eds.ctcb.form.deal.SwitchInvestmentForm">
+        </form-bean>
+        
+        <form-bean name="irregularInvestmentChangeForm"
+                   type="com.eds.ctcb.form.deal.IrregularInvestmentChangeForm">
+        </form-bean>
+        
+        <form-bean name="regularInvestmentChangeForm"
+                   type="com.eds.ctcb.form.deal.RegularInvestmentChangeForm">
+        </form-bean>
+    </form-beans>
+    <global-exceptions/>
+    <global-forwards/>
+    <action-mappings>
+        <action path="/preSingleInvestment"
+                type="com.eds.ctcb.action.SingleInvestmentAction"
+                parameter="preSingleInvestment">
+            <forward name="success" path="singleInvestment"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/menu_1.do"/>
+        </action>
+        <action input="singleInvestment" path="/singleInvestment"
+                name="singleInvestmentForm"
+                type="com.eds.ctcb.action.SingleInvestmentAction"
+                parameter="singleInvestment">
+           <forward name="success" path="showMessage"></forward>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/menu_1.do"/>
+        </action>
+
+        <action path="/preRegularInvestment"
+                type="com.eds.ctcb.action.RegularInvestmentAction"
+                parameter="preRegularInvestment">
+            <forward name="success" path="regularInvestment"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/menu_14.do"/>
+        </action>
+        <action path="/getFundsByType"
+                type="com.eds.ctcb.action.FundAction"
+                parameter="getFundsByType">
+            <forward name="success" path="/jsp/deal/fundSelection1.jsp"/>
+        </action>
+        <action path="/getFundsByCompany"
+                type="com.eds.ctcb.action.FundAction"
+                parameter="getFundsByCompany">
+            <forward name="success" path="/jsp/deal/fundSelection2.jsp"/>
+        </action>
+        <action path="/getCompanyFundsByFundCode"
+                type="com.eds.ctcb.action.FundAction"
+                parameter="getCompanyFundsByFundCode">
+            <forward name="success" path="/jsp/deal/fundSelection3.jsp"/>
+        </action>
+        <action path="/computeHandlingTariff"
+                type="com.eds.ctcb.action.FundAction"
+                parameter="computeHandlingTariff">
+                <forward name="success" path="/jsp/deal/getHandlingTariff.jsp"/>
+        </action>       
+         
+        <action path="/getSumAmount"
+                type="com.eds.ctcb.action.FundAction"
+                parameter="getSumAmount">
+                <forward name="success" path="/jsp/deal/getSumAmount.jsp"/>
+        </action>
+                
+        <action input="regularInvestment" path="/regularInvestment"
+                name="regularInvestmentForm"
+                type="com.eds.ctcb.action.RegularInvestmentAction"
+                parameter="regularInvestment">
+            <forward name="success" path="showMessage"></forward>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/menu_14.do"/>
+        </action>
+        
+        <action path="/preIrregularInvestment"
+                type="com.eds.ctcb.action.IrregularInvestmentAction"
+                parameter="preIrregularInvestment">
+            <forward name="success" path="irregularInvestment"/>
+            <forward name="failure" path="showMsg"></forward>
+            <forward name="return" path="/menu_15.do"/>
+        </action>
+        <action input="irregularInvestment" path="/irregularInvestment"
+                name="irregularInvestmentForm"
+                type="com.eds.ctcb.action.IrregularInvestmentAction"
+                parameter="irregularInvestment">
+            <forward name="success" path="showMessage"></forward>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/menu_15.do"/>
+        </action>
+        
+       <action path="/preSelling"
+                type="com.eds.ctcb.action.SellingAction"
+                parameter="preSelling">
+            <forward name="success" path="selling"/>
+            <forward name="failure" path="showMsg"></forward>
+            <forward name="return" path="/menu_1.do"/>
+        </action>
+        
+        <action input="selling" path="/selling"
+                name="sellingForm"
+                type="com.eds.ctcb.action.SellingAction"
+                parameter="selling">
+            <forward name="success" path="showMessage"></forward>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/menu_1.do"/>
+        </action>
+        
+       <action path="/preChangeFund"
+                type="com.eds.ctcb.action.ChangeFundAction"
+                parameter="preChangeFund">
+            <forward name="success" path="changeFund"/>
+            <forward name="failure" path="showMsg"></forward>
+            <forward name="return" path="/menu_1.do"/>
+        </action>
+        
+        <action input="changeFund" path="/changeFund"
+                name="changeFundForm"
+                type="com.eds.ctcb.action.ChangeFundAction"
+                parameter="changeFund">
+            <forward name="success" path="showMessage"></forward>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/menu_1.do"/>
+        </action>
+        
+        <action path="/preSwitchInvestment"
+                type="com.eds.ctcb.action.SwitchInvestmentAction"
+                parameter="preSwitchInvestment">
+            <forward name="success" path="switchInvestment"/>
+            <forward name="failure" path="showMsg"></forward>
+            <forward name="return" path="/menu_1.do"/>
+        </action>
+        
+        <action input="switchInvestment" path="/switchInvestment"
+                name="switchInvestmentForm"
+                type="com.eds.ctcb.action.SwitchInvestmentAction"
+                parameter="switchInvestment">
+            <forward name="success" path="showMessage"></forward>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/menu_1.do"/>
+        </action>
+
+        <action path="/getRegularInvestmentList"
+                type="com.eds.ctcb.action.RegularInvestmentChangeAction"
+                parameter="getRegularInvestmentList">
+            <forward name="success" path="regularInvestmentList"/>
+            <forward name="failure" path="showMsg"></forward>
+            <forward name="return" path="/menu_14.do"/>
+        </action>
+        
+       <action path="/preRegularInvestmentChange"
+                type="com.eds.ctcb.action.RegularInvestmentChangeAction"
+                parameter="preRegularInvestmentChange">
+            <forward name="success" path="regularInvestmentChange"/>
+            <forward name="failure" path="showMsg"></forward>
+            <forward name="return" path="/getRegularInvestmentList.do"/>
+        </action> 
+        
+        <action input="regularInvestmentChange" path="/regularInvestmentChange"
+        		name="regularInvestmentChangeForm"
+                type="com.eds.ctcb.action.RegularInvestmentChangeAction"
+                parameter="regularInvestmentChange">
+            <forward name="success" path="showMessage"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/getRegularInvestmentList.do"/>
+        </action>
+        
+        <action input="reRegularInvest" path="/reRegularInvest"
+        		name="regularInvestmentChangeForm"
+                type="com.eds.ctcb.action.RegularInvestmentChangeAction"
+                parameter="reRegularInvest">
+            <forward name="success" path="showMessage"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/getRegularInvestmentList.do"/>
+        </action>
+        <action input="stopRegularInvest" path="/stopRegularInvest"
+        		name="regularInvestmentChangeForm"
+                type="com.eds.ctcb.action.RegularInvestmentChangeAction"
+                parameter="stopRegularInvest">
+            <forward name="success" path="showMessage"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/getRegularInvestmentList.do"/>
+        </action>
+        
+        <action path="/getIrregularInvestmentList"
+                type="com.eds.ctcb.action.IrregularInvestmentChangeAction"
+                parameter="getIrregularInvestmentList">
+            <forward name="success" path="irregularInvestmentList"/>
+            <forward name="failure" path="showMsg"></forward>
+            <forward name="return" path="/menu_15.do"/>
+        </action>
+        
+       <action path="/preIrregularInvestmentChange"
+                type="com.eds.ctcb.action.IrregularInvestmentChangeAction"
+                parameter="preIrregularInvestmentChange">
+            <forward name="success" path="irregularInvestmentChange"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/getIrregularInvestmentList.do"/>
+        </action> 
+        
+        <action input="irregularInvestmentChange" path="/irregularInvestmentChange"
+        		name="irregularInvestmentChangeForm"
+                type="com.eds.ctcb.action.IrregularInvestmentChangeAction"
+                parameter="irregularInvestmentChange">
+            <forward name="success" path="showMessage"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/getIrregularInvestmentList.do"/>
+        </action>
+        
+        <action input="reIrregularInvest" path="/reIrregularInvest"
+        		name="irregularInvestmentChangeForm"
+                type="com.eds.ctcb.action.IrregularInvestmentChangeAction"
+                parameter="reIrregularInvest">
+            <forward name="success" path="showMessage"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/getIrregularInvestmentList.do"/>
+        </action>
+        <action input="stopIrregularInvest" path="/stopIrregularInvest"
+        		name="irregularInvestmentChangeForm"
+                type="com.eds.ctcb.action.IrregularInvestmentChangeAction"
+                parameter="stopIrregularInvest">
+            <forward name="success" path="showMessage"/>
+            <forward name="failure" path="showMessage"></forward>
+            <forward name="return" path="/getIrregularInvestmentList.do"/>
+        </action>
+        
+ 
+        
+    </action-mappings>
+
+</struts-config>
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<!-- =================================== Form ================================== -->
+	<form-beans>
+		<form-bean name="loginForm"
+			type="com.eds.ctcb.form.LoginForm">
+		</form-bean>
+	</form-beans>
+	<!-- =================================== Exception ================================== -->
+	<global-exceptions>
+		<exception key="common.error.unknown" type="java.lang.Throwable"
+			handler="com.eds.ctcb.exception.CtcbExceptionHandler" />
+	</global-exceptions>
+	<!-- =================================== Forward ================================== -->
+	<global-forwards>
+		<forward name="showMsg" path="showMessage"></forward>
+	</global-forwards>
+	<!-- =================================== Action ================================== -->
+	<action-mappings>
+		<action path="/login" name="loginForm"
+			type="com.eds.ctcb.action.LoginAction" parameter="login" validate="true">
+			<forward name="success" path="/menu_1.do" redirect="true"></forward>
+			<forward name="failure" path="/preLogin.do"></forward>
+			<forward name="chgPwd" path="/menu_27.do"></forward>
+		</action>
+		<action path="/logout" type="com.eds.ctcb.action.LoginAction"
+			parameter="logout">
+			<forward name="success" path="/preLogin.do"></forward>
+		</action>
+		<action path="/preLogin"
+			type="org.apache.struts.actions.ForwardAction" parameter="login">
+		</action>
+		<action path="/noPriv" type="com.eds.ctcb.action.LoginAction"
+			parameter="noPriv">
+		</action>
+
+		<action path="/menu_1" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preCustOverView.do" />
+		<action path="/menu_3" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSelling.do" />
+		<action path="/menu_4" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preChangeFund.do" />
+		<action path="/menu_5" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSwitchInvestment.do" />
+		<action path="/menu_10" type="com.eds.ctcb.action.MenuAction"
+			parameter="/logout.do" />
+		<action path="/menu_11" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSingleInvestment.do" />
+		<action path="/menu_12" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preRegularInvestment.do" />
+		<action path="/menu_13" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preIrregularInvestment.do" />
+		<action path="/menu_14" type="com.eds.ctcb.action.MenuAction"
+			parameter="/getRegularInvestmentList.do" />
+		<action path="/menu_15" type="com.eds.ctcb.action.MenuAction"
+			parameter="/getIrregularInvestmentList.do" />
+		<action path="/menu_16" type="com.eds.ctcb.action.MenuAction"
+			parameter="/getFundPerformanceList.do" />
+		<action path="/menu_17" type="com.eds.ctcb.action.MenuAction"
+			parameter="/getCustInvestmentList.do" />
+		<action path="/menu_18" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preAddUser.do" />
+		<action path="/menu_19" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preManageUserInfo.do" />
+		<action path="/menu_20" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSetHandleTariff.do" />
+		<action path="/menu_21" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSetMisc.do" />
+		<action path="/menu_22" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSetTransferTariff.do" />
+		<action path="/menu_23" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSetInitInvAmount.do" />
+		<action path="/menu_24" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSetInitPwd.do" />
+		<action path="/menu_25" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preSetCompetitionTopic.do" />
+		<action path="/menu_26" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preModifyUserInfo.do" />
+		<action path="/menu_27" type="com.eds.ctcb.action.MenuAction"
+			parameter="/preModifyUserPwd.do" />
+	</action-mappings>
+	<!-- =================================== Message ================================== -->
+	<message-resources parameter="ApplicationResources" />
+	<!-- =================================== PlugIn ================================== -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/config/validator-rules.xml,/WEB-INF/config/validation.xml,/WEB-INF/config/deal/validation.xml,/WEB-INF/config/report/validation.xml,
+			/WEB-INF/config/system/validation.xml,/WEB-INF/config/user/validation.xml" />
+	</plug-in>
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/config/tiles-def.xml,/WEB-INF/config/deal/tiles-def.xml,/WEB-INF/config/report/tiles-def.xml,
+			/WEB-INF/config/system/tiles-def.xml,/WEB-INF/config/user/tiles-def.xml" />
+		<set-property property="definitions-parser-validate"
+			value="true" />
+	</plug-in>
+</struts-config>
+

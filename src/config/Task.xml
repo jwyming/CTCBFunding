@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+    <!-- ====================== Create thread pool ====================== -->
+    
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="queueCapacity" value="25" />
+	</bean>
+
+	
+    <!-- ====================== Create task object ====================== -->
+	
+    <!-- Assign trade task -->
+	<bean id="assignTradeTask"
+		class="com.eds.ctcb.task.AssignTradeTask">
+		<property name="taskExecutor" ref="taskExecutor" />
+	</bean>
+		
+    <!-- Saving plan task -->
+	<bean id="savingPlanTask"
+		class="com.eds.ctcb.task.SavingPlanTask">
+		<property name="taskExecutor" ref="taskExecutor" />
+	</bean>
+	
+    <!-- Fund data synchronizing task -->
+	<bean id="fundDataSynTask"
+		class="com.eds.ctcb.task.FundDataSynTask">
+		<property name="taskExecutor" ref="taskExecutor" />
+	</bean>
+	
+    <!-- Exchange rate data synchronizing task -->
+	<bean id="exchangeRateDataSynTask"
+		class="com.eds.ctcb.task.ExchangeRateDataSynTask">
+		<property name="taskExecutor" ref="taskExecutor" />
+	</bean>
+	
+    <!-- Make order report task -->
+	<bean id="makeOrderReportTask"
+		class="com.eds.ctcb.task.MakeOrderReportTask">
+		<property name="taskExecutor" ref="taskExecutor" />
+	</bean>
+
+	
+    <!-- ====================== Create job detail object ====================== -->
+	
+    <!-- Assign trade job detail -->
+	<bean id="assignTradeJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="assignTradeTask" />
+		<property name="targetMethod" value="inProcess" />
+	</bean>
+	
+    <!-- Saving plan job detail -->
+	<bean id="savingPlanJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="savingPlanTask" />
+		<property name="targetMethod" value="inProcess" />
+	</bean>
+	
+    <!-- Fund data synchronizing job detail -->
+	<bean id="fundDataSynJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="fundDataSynTask" />
+		<property name="targetMethod" value="inProcess" />
+	</bean>
+	
+    <!-- Exchange rate data synchronizing job detail -->
+	<bean id="exchangeRateDataSynJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="exchangeRateDataSynTask" />
+		<property name="targetMethod" value="inProcess" />
+	</bean>
+	
+    <!-- Make order report job detail -->
+	<bean id="makeOrderReportJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="makeOrderReportTask" />
+		<property name="targetMethod" value="inProcess" />
+	</bean>
+	
+	
+    <!-- ====================== Define trigger expression ====================== -->
+	
+    <!-- Assign trade trigger -->
+    <!-- Fire every 30 minutes every day -->
+	<bean id="assignTradeTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="assignTradeJobDetail" />
+		<property name="cronExpression" value="0 0/30 * * * ?" />
+		<!--<property name="cronExpression" value="0/15 * * * * ?" />-->
+	</bean>
+	
+    <!-- Saving plan trigger -->
+    <!-- Fire every 20 minutes starting at 6am and ending at 6:40am on the first day of every month -->
+	<bean id="savingPlanTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="savingPlanJobDetail" />
+		<property name="cronExpression" value="0 0/20 6 1 * ?" />
+		<!--<property name="cronExpression" value="0/20 * * * * ?" />-->
+	</bean>
+	
+    <!-- Fund data synchronizing trigger -->
+    <!-- Fire every 20 minutes starting at 11pm and ending at 11:40pm every day -->
+	<bean id="fundDataSynTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="fundDataSynJobDetail" />
+		<property name="cronExpression" value="0 0/20 23 * * ?" />
+	</bean>
+	
+    <!-- Exchange rate data synchronizing trigger -->
+    <!-- Fire every 20 minutes starting at 11pm and ending at 11:40pm every day -->
+	<bean id="exchangeRateDataSynTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="exchangeRateDataSynJobDetail" />
+		<property name="cronExpression" value="0 0/20 23 * * ?" />
+	</bean>
+	
+    <!-- Make order report trigger -->
+    <!-- Fire every 20 minutes starting at 0am and ending at 0:40am on the first day of each season -->
+	<bean id="makeOrderReportTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="makeOrderReportJobDetail" />
+		<!-- <property name="cronExpression" value="0 0/20 0 1 1,4,7,10 ?" /> -->
+		<property name="cronExpression" value="0/30 * * * * ?" />
+		
+	</bean>
+
+	
+    <!-- ====================== Start quartz task ====================== -->
+	
+	<bean
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+            <ref bean="assignTradeTrigger" />
+			<ref bean="savingPlanTrigger" /> 
+			<!--<ref bean="fundDataSynTrigger" />-->
+			<!--<ref bean="exchangeRateDataSynTrigger" />-->
+			<ref bean="makeOrderReportTrigger" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
